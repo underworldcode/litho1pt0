@@ -2,7 +2,7 @@
 #  Short docker file to distribute some notebooks
 #################################################
 
-ARG FROMIMG_ARG
+ARG FROMIMG_ARG=underworldcode/py3-lavavu-notebook-bundle:latest
 FROM ${FROMIMG_ARG}
 
 ##################################################
@@ -25,9 +25,9 @@ RUN   cd $MODULE_DIR && pip install --no-cache-dir --no-deps --upgrade .
 # This file is too big to bundle with the pip installation
 ADD  --chown=jovyan:jovyan $MODULE_DIR/litho1pt0/Notebooks/litho1pt0/Data  Notebooks/Data
 
-USER jovyan
+# USER jovyan
 RUN ipython -c 'import stripy; stripy.documentation.install_documentation(path="Notebooks")'
-ADD  --chown=jovyan:jovyan $NB_DIR/0-StartHere.ipynb Notebooks/0-StartHere.ipynb
+ADD  --chown=jovyan:jovyan Notebooks/0-StartHere.ipynb Notebooks/0-StartHere.ipynb
 
 
 RUN ipython -c 'import litho1pt0; litho1pt0.documentation.install_documentation(path="Notebooks")'
@@ -49,11 +49,11 @@ USER jovyan
 ## build-dockerfile.sh
 
 ARG IMAGENAME_ARG
-ARG PROJ_NAME_ARG
-ARG NB_PORT_ARG
-ARG NB_PASSWD_ARG
-ARG NB_DIR_ARG
-ARG START_NB_ARG
+ARG PROJ_NAME_ARG=stripy
+ARG NB_PORT_ARG=8888
+ARG NB_PASSWD_ARG=""
+ARG NB_DIR_ARG="Notebooks"
+ARG START_NB_ARG="0-StartHere.ipynb"
 
 # The args need to go into the environment so they
 # can be picked up by commands/templates (defined previously)
@@ -83,7 +83,8 @@ EXPOSE $NB_PORT
 VOLUME /home/jovyan/$NB_DIR/user_data
 
 # note we use xvfb which to mimic the X display for lavavu
-ENTRYPOINT ["/usr/local/bin/tini", "--", "/usr/local/bin/xvfbrun.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/xvfbrun.sh"]
 
 # launch notebook
-CMD scripts/run-jupyter.sh
+# CMD scripts/run-jupyter.sh
+CMD ["jupyter", "notebook", "--ip='0.0.0.0'", "--NotebookApp.token='' ", "--no-browser"]
