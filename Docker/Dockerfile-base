@@ -88,9 +88,9 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip numpy && \
 
 
 # helper file for xvfb (for LavaVu)
-ADD xvfb-run /usr/bin/
+ADD Docker/scripts/xvfb-run /usr/bin/
 RUN chmod +x /usr/bin/xvfb-run
-ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD Docker/scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # script for xvfb-run.  all docker commands will effectively run under this via the entrypoint
 RUN printf "#\041/bin/sh \n rm -f /tmp/.X99-lock && xvfb-run -s '-screen 0 1600x1200x16' \$@" >> /usr/local/bin/xvfbrun.sh && \
@@ -117,3 +117,15 @@ RUN addgroup jovyan && \
 WORKDIR /home/jovyan
 RUN chown -R jovyan:jovyan /home/jovyan
 USER jovyan
+
+
+
+## Temporary commands for Owen
+VOLUME /home/jovyan/$NB_DIR/user_data
+
+# note we use xvfb which to mimic the X display for lavavu
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/xvfbrun.sh"]
+
+# launch notebook
+# CMD scripts/run-jupyter.sh
+CMD ["jupyter", "notebook", "--ip='0.0.0.0'", "--NotebookApp.token='' ", "--no-browser"]
