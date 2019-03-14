@@ -23,14 +23,9 @@ RUN apk add --update --no-cache \
     xvfb \
     tini \
     xorg-server-dev \
-    glu \
-    glew-dev \
-    mesa-dev \
-    mesa-gl \
     freetype-dev \
     libpng-dev \
     libxml2-dev \
-    freeglut-dev \
     openblas-dev \
     geos-dev \
     proj4-dev
@@ -63,52 +58,60 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip numpy && \
 
 # Compile mesa from source
 # https://github.com/utensils/docker-opengl/blob/master/Dockerfile
-# RUN apk add expat-dev llvm-dev python2-dev && \
-#     mkdir -p /var/tmp/build; \
-#     cd /var/tmp/build; \
-#     wget "https://mesa.freedesktop.org/archive/mesa-18.0.1.tar.gz"; \
-#     tar xfv mesa-18.0.1.tar.gz; \
-#     rm mesa-18.0.1.tar.gz; \
-#     cd mesa-18.0.1; \
-#     ./configure --enable-glx=gallium-xlib --with-gallium-drivers=swrast,swr --disable-dri --disable-gbm --disable-egl --enable-gallium-osmesa --prefix=/usr/local; \
-#     make; \
-#     make install; \
-#     cd .. ; \
-#     rm -rf mesa-18.0.1; \
+RUN apk add --no-cache expat-dev llvm-dev python2 && \
+    mkdir -p /var/tmp/build && \
+    cd /var/tmp/build && \
+    wget "https://mesa.freedesktop.org/archive/mesa-18.0.1.tar.gz" && \
+    tar xfv mesa-18.0.1.tar.gz && \
+    rm mesa-18.0.1.tar.gz && \
+    cd mesa-18.0.1 && \
+    ./configure CFLAGS="-g -O3" CXXFLAGS="-g -O3" \
+        --enable-glx=gallium-xlib \
+        --with-gallium-drivers=swrast,swr \
+        --disable-dri \
+        --disable-gbm \
+        --disable-egl \
+        --enable-gallium \
+        --prefix=/usr/local && \
+    make -j$(nproc) && \
+    make install && \
+    cd ..  && \
+    rm -rf mesa-18.0.1 && \
+    apk del expat-dev llvm-dev python2
 
 # # Setup our environment variables.
-# ENV XVFB_WHD="1920x1080x24"\
-#     DISPLAY=":99" \
-#     LIBGL_ALWAYS_SOFTWARE="1" \
-#     GALLIUM_DRIVER="llvmpipe" \
-#     LP_NO_RAST="false" \
-#     LP_DEBUG="" \
-#     LP_PERF="" \
-#     LP_NUM_THREADS=""
+ENV XVFB_WHD="1920x1080x24"\
+    DISPLAY=":99" \
+    LIBGL_ALWAYS_SOFTWARE="1" \
+    GALLIUM_DRIVER="llvmpipe" \
+    LP_NO_RAST="false" \
+    LP_DEBUG="" \
+    LP_PERF="" \
+    LP_NUM_THREADS=""
+
+#Dirty hack to fix error with mesa GL and musl libc
+#(_glapi_tls_Dispatch: initial-exec TLS resolves to dynamic definition in /usr/local/lib/libglapi.so.0)
+ENV LD_PRELOAD=/usr/local/lib/libGL.so.1
 
 
 # helper file for xvfb (for LavaVu)
 ADD Docker/scripts/xvfb-run /usr/bin/
 RUN chmod +x /usr/bin/xvfb-run
-ADD Docker/scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+#ADD scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # script for xvfb-run.  all docker commands will effectively run under this via the entrypoint
 RUN printf "#\041/bin/sh \n rm -f /tmp/.X99-lock && xvfb-run -s '-screen 0 1600x1200x16' \$@" >> /usr/local/bin/xvfbrun.sh && \
 chmod +x /usr/local/bin/xvfbrun.sh
 
 
-# Tini is now available at /sbin/tini
-ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/xvfbrun.sh"]
-
-
 # environment variable will internally run xvfb when glucifer is imported
 # see /opt/underworld2/glucifer/__init__.py
 ENV GLUCIFER_USE_XVFB 1
 
-
 # add a notebook profile
 RUN mkdir -p -m 700 /root/.jupyter/ && \
-    echo "c.NotebookApp.ip = '0.0.0.0'" >> /root/.jupyter/jupyter_notebook_config.py
+    echo "c.NotebookApp.ip = '0.0.0.0'" >> /root/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.token = ''" >> /root/.jupyter/jupyter_notebook_config.py
 
 
 RUN addgroup jovyan && \
