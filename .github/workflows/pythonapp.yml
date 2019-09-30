@@ -13,11 +13,18 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
+    - name: Install gfortran
+      run: |
+        sudo apt-get install -y gfortran
+        #
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # pip install -r requirements.txt
-        pip install numpy scipy stripy
+        pip install numpy 
+        pip install scipy 
+        pip install Cython
+        pip install stripy
+        # 
     - name: Lint with flake8
       run: |
         pip install flake8
