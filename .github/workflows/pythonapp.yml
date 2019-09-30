@@ -19,9 +19,7 @@ jobs:
         pip install numpy 
         pip install scipy 
         pip install Cython
-        pip install stripy
-      with: 
-        f77_compiler: gcc 
+        f77_compiler=gcc pip install stripy
         # 
     - name: Lint with flake8
       run: |
