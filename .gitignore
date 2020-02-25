@@ -7,13 +7,14 @@ __pycache__
 
 swpcom.mod
 
-stripy-src/build/*
-stripy-src/dist/*
+build/*
+dist/*
 
-litho1pt0-src/build/*
-litho1pt0-src/dist/*
+/docs/
+litho1pt0.html
 
 *.egg
+/litho1pt0.egg-info/
 
 src/_*module.c
 src/_*wrappers.f
