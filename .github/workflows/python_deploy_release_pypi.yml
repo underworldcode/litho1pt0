@@ -13,9 +13,11 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: '3.x'
+
     - name: Install gfortran
         run: |
           sudo apt-get install -y gfortran
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
