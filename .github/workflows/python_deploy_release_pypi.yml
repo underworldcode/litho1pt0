@@ -16,8 +16,8 @@ jobs:
         python-version: '3.x'
 
     - name: Install gfortran
-        run: |
-          sudo apt-get install -y gfortran
+      run: |
+        sudo apt-get install -y gfortran
 
     - name: Install dependencies
       run: |
