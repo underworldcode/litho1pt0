@@ -4,7 +4,6 @@ on:
   push:
     branches: [dev, master]
 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,12 +14,22 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: '3.x'    
-   
-      - name: Setup pdoc
+
+        # This is needed because we install stripy for litho1pt0 build for documentation
+      - name: Install gfortran 
+        run: |
+          sudo apt-get install -y gfortran
+         
+        # The numpy etc are needed because we install stripy for litho1pt0 build for documentation
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install numpy 
+          pip install scipy 
+          pip install Cython
+          pip install stripy
           pip install pdoc3
-
+   
       - name: Build docs with pdoc
         run: | 
           mkdir -p docs
