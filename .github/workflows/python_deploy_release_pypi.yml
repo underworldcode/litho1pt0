@@ -3,7 +3,6 @@ name: Upload Python Package to PYPI
 on:
   release:
     types: [created]
-    type:  [created]
 
 jobs:
   deploy:
