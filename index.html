@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.5" />
+<title>litho1pt0 API documentation</title>
+<meta name="description" content="Copyright 2017 Louis Moresi …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>litho1pt0</code></h1>
+</header>
+<section id="section-intro">
+<p>Copyright 2017 Louis Moresi</p>
+<p>This file is part of Litho1pt.</p>
+<p>Stripy is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or any later version.</p>
+<p>Stripy is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the
+GNU Lesser General Public License for more details.</p>
+<p>You should have received a copy of the GNU Lesser General Public License
+along with Litho1pt0.
+If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Copyright 2017 Louis Moresi
+
+This file is part of Litho1pt.
+
+Stripy is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stripy is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Litho1pt0.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+&#34;&#34;&#34;
+
+from . import documentation
+
+import os.path as path
+import stripy as stripy
+import numpy as np
+import subprocess
+import shutil as shutil
+import pkg_resources
+
+from collections import OrderedDict as _OrderedDict
+
+DATA_PATH  = pkg_resources.resource_filename(&#39;litho1pt0&#39;, &#39;data/&#39;)
+L1pt0_FILE = pkg_resources.resource_filename(&#39;litho1pt0&#39;, &#39;data/litho_data.npz&#39;)
+C1pt0_FILE = pkg_resources.resource_filename(&#39;litho1pt0&#39;, &#39;data/Crust1pt0-regionalisation.npz&#39;)
+
+##
+## These are the data structures needed to decode the litho1.0 and crust1.0 files
+##
+
+l1_layer_decode = _OrderedDict()
+l1_layer_decode[&#34;ASTHENO-TOP&#34;   ] =  0
+l1_layer_decode[&#34;LID-BOTTOM&#34;    ] =  1
+l1_layer_decode[&#34;LID-TOP&#34;       ] =  2
+l1_layer_decode[&#34;CRUST3-BOTTOM&#34; ] =  3
+l1_layer_decode[&#34;CRUST3-TOP&#34;    ] =  4
+l1_layer_decode[&#34;CRUST2-BOTTOM&#34; ] =  5
+l1_layer_decode[&#34;CRUST2-TOP&#34;    ] =  6
+l1_layer_decode[&#34;CRUST1-BOTTOM&#34; ] =  7
+l1_layer_decode[&#34;CRUST1-TOP&#34;    ] =  8
+l1_layer_decode[&#34;SEDS3-BOTTOM&#34;  ] =  9
+l1_layer_decode[&#34;SEDS3-TOP&#34;     ] =  10
+l1_layer_decode[&#34;SEDS2-BOTTOM&#34;  ] =  11
+l1_layer_decode[&#34;SEDS2-TOP&#34;     ] =  12
+l1_layer_decode[&#34;SEDS1-BOTTOM&#34;  ] =  13
+l1_layer_decode[&#34;SEDS1-TOP&#34;     ] =  14
+l1_layer_decode[&#34;WATER-BOTTOM&#34;  ] =  15
+l1_layer_decode[&#34;WATER-TOP&#34;     ] =  16
+l1_layer_decode[&#34;ICE-BOTTOM&#34;    ] =  17
+l1_layer_decode[&#34;ICE-TOP&#34;       ] =  18
+
+
+l1_data_decode = _OrderedDict()
+l1_data_decode[ &#34;DEPTH&#34;    ] = 0   # (m)
+l1_data_decode[ &#34;DENSITY&#34;  ] = 1   # (kg/m^3)
+l1_data_decode[ &#34;VP&#34;       ] = 2   # (m/s)
+l1_data_decode[ &#34;VS&#34;       ] = 3   # (m/s)
+l1_data_decode[ &#34;QKAPPA&#34;   ] = 4   #   -
+l1_data_decode[ &#34;QMU&#34;      ] = 5   #   -
+l1_data_decode[ &#34;VP2&#34;      ] = 6   # (m/s)
+l1_data_decode[ &#34;VS2&#34;      ] = 7   # (m/s)
+l1_data_decode[ &#34;ETA&#34;      ] = 8   #   -
+
+c1_region_descriptor = []
+c1_region_descriptor.append(&#34;Platform&#34;)
+c1_region_descriptor.append(&#34;Slow, thin Platform&#34;)
+c1_region_descriptor.append(&#34;Archean (Antarctica)&#34;)
+c1_region_descriptor.append(&#34;Early Archean&#34;)
+c1_region_descriptor.append(&#34;Late Archean&#34;)
+c1_region_descriptor.append(&#34;Early/mid  Proter.,&#34;)
+c1_region_descriptor.append(&#34;Early/mid  Proter. (Antarctica, slow)&#34;)
+c1_region_descriptor.append(&#34;Late Proter.&#34;)
+c1_region_descriptor.append(&#34;Slow late Proter.&#34;)
+c1_region_descriptor.append(&#34;Island arc&#34;)
+c1_region_descriptor.append(&#34;Forearc&#34;)
+c1_region_descriptor.append(&#34;Continental arc&#34;)
+c1_region_descriptor.append(&#34;Slow continental arc&#34;)
+c1_region_descriptor.append(&#34;Extended crust&#34;)
+c1_region_descriptor.append(&#34;Fast extended crust (Antarctica)&#34;)
+c1_region_descriptor.append(&#34;Orogen (Antarctica), thick upper, thin lower crust&#34;)
+c1_region_descriptor.append(&#34;Orogen, thick upper crust, very thin lower crust&#34;)
+c1_region_descriptor.append(&#34;Orogen, thick upper crust, fast middle crust&#34;)
+c1_region_descriptor.append(&#34;Orogen with slow lower crust (Andes)&#34;)
+c1_region_descriptor.append(&#34;Slow orogen (Himalaya)&#34;)
+c1_region_descriptor.append(&#34;Margin-continent/shield  transition&#34;)
+c1_region_descriptor.append(&#34;Slow Margin/Shield (Antarctica)&#34;)
+c1_region_descriptor.append(&#34;Rift&#34;)
+c1_region_descriptor.append(&#34;Phanerozoic&#34;)
+c1_region_descriptor.append(&#34;Fast Phanerozoic (E. Australia, S. Africa, N. Siberia)&#34;)
+c1_region_descriptor.append(&#34;Normal oceanic&#34;)
+c1_region_descriptor.append(&#34;Oceans 3 Myrs and younger&#34;)
+c1_region_descriptor.append(&#34;Melt affected o.c. and oceanic plateaus&#34;)
+c1_region_descriptor.append(&#34;Continental shelf&#34;)
+c1_region_descriptor.append(&#34;Continental slope, margin, transition&#34;)
+c1_region_descriptor.append(&#34;Inactive ridge, Alpha Ridge&#34;)
+c1_region_descriptor.append(&#34;Thinned cont. crust, Red Sea&#34;)
+c1_region_descriptor.append(&#34;Oceanic plateau with cont. crust&#34;)
+c1_region_descriptor.append(&#34;Caspian depression&#34;)
+c1_region_descriptor.append(&#34;Intermed. cont./oc. crust, Black Sea&#34;)
+c1_region_descriptor.append(&#34;Caspian Sea oceanic&#34;)
+
+# This is only useful when converting the original data
+_c1_region_decode = _OrderedDict()
+_c1_region_decode[&#34;D-&#34;]= 0
+_c1_region_decode[&#34;E-&#34;]= 1
+_c1_region_decode[&#34;F-&#34;]= 2
+_c1_region_decode[&#34;G1&#34;]= 3
+_c1_region_decode[&#34;G2&#34;]= 4
+_c1_region_decode[&#34;H1&#34;]= 5
+_c1_region_decode[&#34;H2&#34;]= 6
+_c1_region_decode[&#34;I1&#34;]= 7
+_c1_region_decode[&#34;I2&#34;]= 8
+_c1_region_decode[&#34;J-&#34;]= 9
+_c1_region_decode[&#34;K-&#34;]= 10
+_c1_region_decode[&#34;L1&#34;]= 11
+_c1_region_decode[&#34;L2&#34;]= 12
+_c1_region_decode[&#34;M-&#34;]= 13
+_c1_region_decode[&#34;N-&#34;]= 14
+_c1_region_decode[&#34;O-&#34;]= 15
+_c1_region_decode[&#34;P-&#34;]= 16
+_c1_region_decode[&#34;Q-&#34;]= 17
+_c1_region_decode[&#34;R1&#34;]= 18
+_c1_region_decode[&#34;R2&#34;]= 19
+_c1_region_decode[&#34;T-&#34;]= 20
+_c1_region_decode[&#34;U-&#34;]= 21
+_c1_region_decode[&#34;X-&#34;]= 22
+_c1_region_decode[&#34;Z1&#34;]= 23
+_c1_region_decode[&#34;Z2&#34;]= 24
+_c1_region_decode[&#34;A1&#34;]= 25
+_c1_region_decode[&#34;A0&#34;]= 26
+_c1_region_decode[&#34;B-&#34;]= 27
+_c1_region_decode[&#34;C-&#34;]= 28
+_c1_region_decode[&#34;S-&#34;]= 29
+_c1_region_decode[&#34;V1&#34;]= 30
+_c1_region_decode[&#34;V2&#34;]= 31
+_c1_region_decode[&#34;W-&#34;]= 32
+_c1_region_decode[&#34;Y1&#34;]= 33
+_c1_region_decode[&#34;Y2&#34;]= 34
+_c1_region_decode[&#34;Y3&#34;]= 35
+
+
+###
+###  Initialise the module
+###
+
+_l1_data = np.load(L1pt0_FILE)
+_litho_data = _l1_data[&#34;litho1_all_data&#34;]
+_mesh_coords = _l1_data[&#34;litho1_mesh_coords&#34;]
+_interpolator = stripy.sTriangulation(np.radians(_mesh_coords.T[2]), np.radians(_mesh_coords.T[0]))
+
+_c1_data = np.load(C1pt0_FILE)
+_c1_crust_type_lat_lon = _c1_data[&#39;latlonDescriptor&#39;]
+
+def layer_depth( lat, lon, layerID=&#34;LID-BOTTOM&#34;):
+    &#34;&#34;&#34;Returns layer depth at lat / lon (degrees)
+    where lat/lon may be arrays (of equal size).
+    Depths are returned in metres.
+    &#34;&#34;&#34;
+
+    ## Must wrap longitude from 0 to 360 ...
+
+    lon1 = np.array(lon)%360.0
+    lat1 = np.array(lat)
+
+    # ## Must wrap longitude from -180 to 180 ...
+    #
+    # lon1[np.where(lon1 &gt; 180.0)] = 360.0 - lon1[np.where(lon1 &gt; 180.0)]
+    #
+    data, err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[l1_layer_decode[layerID], l1_data_decode[&#34;DEPTH&#34;]], order=1 )
+
+    return data
+
+
+def crust_type_at(lat=None, lon=None):
+    &#34;&#34;&#34;
+    lat, lon (degrees)
+    &#34;&#34;&#34;
+    # Get lon into appropriate format
+
+    lats = np.array(lat)
+    lons = np.array(lon%360)
+
+    iVals = ((90.0-lats)%180).astype(np.int)
+    jVals = (lons%360.0).astype(int)
+
+    # i = int((-lat+90.0)%180)
+    # j = int(lon)
+
+    t = _c1_crust_type_lat_lon[iVals,jVals]
+
+    # t = _c1_crust_type_lat_lon[i,j]
+    # des = litho.c1_region_descriptor[t]
+
+    return t
+
+
+
+
+
+    return t
+
+
+def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID=&#34;DENSITY&#34;):
+    &#34;&#34;&#34;
+    Lat / Lon are in degrees
+    Depth in km
+    quantity_ID needs to match those in the litho1 model
+
+    Points that are not found are given the out-of-range value of -99999
+    &#34;&#34;&#34;
+
+    nlayers = len(l1_layer_decode)
+    shape = np.array(lon).shape
+
+    lon1   = np.array(lon).reshape(-1)
+    lat1   = np.array(lat).reshape(-1)
+    depth1 = np.array(depth).reshape(-1)
+    point_properties = np.empty_like(depth1)
+
+    layer_depths     = np.empty((nlayers, lat1.shape[0]))
+    layer_properties = np.ones((nlayers+1, lat1.shape[0])) * -99999.0  # if the point is not found it will end up in the overshoot !
+
+    # should assert here that the three arrays are equal size
+
+    for i in range(0, nlayers, 1 ):
+        layer_depths[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
+                                      _litho_data[i,l1_data_decode[&#34;DEPTH&#34;]], order=1)
+        layer_properties[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
+                                      _litho_data[i,l1_data_decode[quantity_ID]], order=1)
+
+
+    A = -layer_depths
+    B = -depth1 * 1000.0
+    C = divmod(np.searchsorted(A.ravel(), B), A.shape[1])[0] # YEP - this seems to be the best way !!
+
+    # point_properties = np.diag(layer_properties[C[:],:])
+
+    point_properties = np.empty_like(depth1)
+    for i,layer in enumerate(C):
+
+        point_properties[i] = layer_properties[layer,i]
+
+    return C, point_properties.reshape(shape)
+
+def property_on_depth_profile(lat, lon, depths, quantity_ID=&#34;DENSITY&#34;):
+    &#34;&#34;&#34;
+    Lat / Lon are in degrees
+    Depth in km
+    quantity_ID needs to match those in the litho1 model
+
+    Points that are not found are given the out-of-range value of -99999
+
+    &#34;&#34;&#34;
+
+    lon1 = np.array((lon,))
+    lat1 = np.array((lat,))
+    depths1 = np.array(depths)
+
+    nlayers = len(l1_layer_decode)
+    point_properties = np.empty_like(depths)
+
+    layer_depths     = np.empty((nlayers))
+    layer_properties = np.ones((nlayers+1)) * -99999.0  # if the point is not found it will end up in the overshoot !
+
+    # should assert here that the three arrays are equal size
+
+    for i in range(0, nlayers, 1 ):
+        layer_depths[i], err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[i,l1_data_decode[&#34;DEPTH&#34;]], order=1)
+        layer_properties[i], err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[i,l1_data_decode[quantity_ID]], order=1)
+
+
+    A = -layer_depths
+    B = -depths1 * 1000.0
+    C = np.searchsorted(A, B)
+
+    point_properties = np.empty_like(depths)
+    for i,layer in enumerate(C):
+
+        point_properties[i] = layer_properties[layer]
+
+    return C, point_properties
+
+
+
+## This stuff makes a lot less sense for the package ... should be in a setup script.
+
+
+def preprocess_raw_litho1_data(model_path, truncated_model_path):
+
+    print (&#34;Running text-file processing script (this may take a while)&#34;)
+    truncation_script = path.join(path.dirname(__file__),&#34;scripts&#34;,&#34;truncate_litho1_model_files.sh&#34;)
+    output = subprocess.check_output([truncation_script, &#34;-r&#34;, model_path, &#34;-t&#34;, truncated_model_path])
+
+    # now copy the coordinate files as well
+    print (&#34;Copying node coordinate data&#34;)
+
+    shutil.copy(path.join(model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34; ),
+                path.join(truncated_model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34; ) )
+
+    print (&#34;Done ! &#34;)
+    print (&#34;Processed model files can be found in truncated_model_path as *.model_tr &#34;)
+
+    return
+
+
+def process_raw_litho1_data(model_path):
+    &#34;&#34;&#34;
+    Don&#39;t forget to strip the model data first
+    truncate_raw_litho1_data(model path, truncated_model_path)
+    &#34;&#34;&#34;
+
+    npoints = 40962
+    nlayers = len(l1_layer_decode)
+    nentries = 9
+
+    litho_data = np.ones((nlayers, nentries, npoints)) * -99999.0
+
+    for model in range(0,npoints):
+        model_name = &#34;node&#34;+str(model+1)+&#34;.model_tr&#34;
+        file = path.join(model_path, model_name)
+
+        thisnodedata  = np.loadtxt(file, usecols=np.arange(0,9), comments=&#34;nlayer&#34;)
+        thisnodeident = np.loadtxt(file, usecols=(9,), dtype=str, comments=&#34;nlayer&#34;)
+
+        if (model % 1000 == 0):
+            print (&#34;Reading node &#34;, model)
+
+        for i, ident in enumerate(thisnodeident):
+            litho_data[l1_layer_decode[ident], :,  model] = thisnodedata[i,:]
+
+        ## Post process - not all layers in the model are populated (gives -99999 which is always illegal)
+        ## For depth, it makes more sense to have the layer simply have no thickness but appear in the default order
+
+        for layer in range(9,nlayers):
+            missing_entries = np.where(litho_data[layer, l1_data_decode[&#34;DEPTH&#34;]] == -99999)
+            litho_data[layer, l1_data_decode[&#34;DEPTH&#34;], missing_entries] = litho_data[layer-1, l1_data_decode[&#34;DEPTH&#34;], missing_entries]
+
+    grid_points_location = path.join(model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34;)
+    litho_points = np.loadtxt( grid_points_location )
+
+    return litho_data, litho_points
+
+def write_processed_litho_data(filename, litho_data, litho_points):
+    &#34;&#34;&#34;
+    Ensures that the data is stored in a format which is valid for initialising the class
+    &#34;&#34;&#34;
+
+    np.savez_compressed(filename, litho1_all_data=litho_data, litho1_mesh_coords=litho_points)
+
+    return</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="litho1pt0.documentation" href="documentation.html">litho1pt0.documentation</a></code></dt>
+<dd>
+<section class="desc"><p>Copyright 2017 Louis Moresi …</p></section>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="litho1pt0.crust_type_at"><code class="name flex">
+<span>def <span class="ident">crust_type_at</span></span>(<span>lat=None, lon=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>lat, lon (degrees)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def crust_type_at(lat=None, lon=None):
+    &#34;&#34;&#34;
+    lat, lon (degrees)
+    &#34;&#34;&#34;
+    # Get lon into appropriate format
+
+    lats = np.array(lat)
+    lons = np.array(lon%360)
+
+    iVals = ((90.0-lats)%180).astype(np.int)
+    jVals = (lons%360.0).astype(int)
+
+    # i = int((-lat+90.0)%180)
+    # j = int(lon)
+
+    t = _c1_crust_type_lat_lon[iVals,jVals]
+
+    # t = _c1_crust_type_lat_lon[i,j]
+    # des = litho.c1_region_descriptor[t]
+
+    return t
+
+
+
+
+
+    return t</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.layer_depth"><code class="name flex">
+<span>def <span class="ident">layer_depth</span></span>(<span>lat, lon, layerID='LID-BOTTOM')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns layer depth at lat / lon (degrees)
+where lat/lon may be arrays (of equal size).
+Depths are returned in metres.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def layer_depth( lat, lon, layerID=&#34;LID-BOTTOM&#34;):
+    &#34;&#34;&#34;Returns layer depth at lat / lon (degrees)
+    where lat/lon may be arrays (of equal size).
+    Depths are returned in metres.
+    &#34;&#34;&#34;
+
+    ## Must wrap longitude from 0 to 360 ...
+
+    lon1 = np.array(lon)%360.0
+    lat1 = np.array(lat)
+
+    # ## Must wrap longitude from -180 to 180 ...
+    #
+    # lon1[np.where(lon1 &gt; 180.0)] = 360.0 - lon1[np.where(lon1 &gt; 180.0)]
+    #
+    data, err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[l1_layer_decode[layerID], l1_data_decode[&#34;DEPTH&#34;]], order=1 )
+
+    return data</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.preprocess_raw_litho1_data"><code class="name flex">
+<span>def <span class="ident">preprocess_raw_litho1_data</span></span>(<span>model_path, truncated_model_path)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def preprocess_raw_litho1_data(model_path, truncated_model_path):
+
+    print (&#34;Running text-file processing script (this may take a while)&#34;)
+    truncation_script = path.join(path.dirname(__file__),&#34;scripts&#34;,&#34;truncate_litho1_model_files.sh&#34;)
+    output = subprocess.check_output([truncation_script, &#34;-r&#34;, model_path, &#34;-t&#34;, truncated_model_path])
+
+    # now copy the coordinate files as well
+    print (&#34;Copying node coordinate data&#34;)
+
+    shutil.copy(path.join(model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34; ),
+                path.join(truncated_model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34; ) )
+
+    print (&#34;Done ! &#34;)
+    print (&#34;Processed model files can be found in truncated_model_path as *.model_tr &#34;)
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.process_raw_litho1_data"><code class="name flex">
+<span>def <span class="ident">process_raw_litho1_data</span></span>(<span>model_path)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Don't forget to strip the model data first
+truncate_raw_litho1_data(model path, truncated_model_path)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process_raw_litho1_data(model_path):
+    &#34;&#34;&#34;
+    Don&#39;t forget to strip the model data first
+    truncate_raw_litho1_data(model path, truncated_model_path)
+    &#34;&#34;&#34;
+
+    npoints = 40962
+    nlayers = len(l1_layer_decode)
+    nentries = 9
+
+    litho_data = np.ones((nlayers, nentries, npoints)) * -99999.0
+
+    for model in range(0,npoints):
+        model_name = &#34;node&#34;+str(model+1)+&#34;.model_tr&#34;
+        file = path.join(model_path, model_name)
+
+        thisnodedata  = np.loadtxt(file, usecols=np.arange(0,9), comments=&#34;nlayer&#34;)
+        thisnodeident = np.loadtxt(file, usecols=(9,), dtype=str, comments=&#34;nlayer&#34;)
+
+        if (model % 1000 == 0):
+            print (&#34;Reading node &#34;, model)
+
+        for i, ident in enumerate(thisnodeident):
+            litho_data[l1_layer_decode[ident], :,  model] = thisnodedata[i,:]
+
+        ## Post process - not all layers in the model are populated (gives -99999 which is always illegal)
+        ## For depth, it makes more sense to have the layer simply have no thickness but appear in the default order
+
+        for layer in range(9,nlayers):
+            missing_entries = np.where(litho_data[layer, l1_data_decode[&#34;DEPTH&#34;]] == -99999)
+            litho_data[layer, l1_data_decode[&#34;DEPTH&#34;], missing_entries] = litho_data[layer-1, l1_data_decode[&#34;DEPTH&#34;], missing_entries]
+
+    grid_points_location = path.join(model_path,&#34;Icosahedron_Level7_LatLon_mod.txt&#34;)
+    litho_points = np.loadtxt( grid_points_location )
+
+    return litho_data, litho_points</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.property_at_lat_lon_depth_points"><code class="name flex">
+<span>def <span class="ident">property_at_lat_lon_depth_points</span></span>(<span>lat, lon, depth, quantity_ID='DENSITY')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Lat / Lon are in degrees
+Depth in km
+quantity_ID needs to match those in the litho1 model</p>
+<p>Points that are not found are given the out-of-range value of -99999</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID=&#34;DENSITY&#34;):
+    &#34;&#34;&#34;
+    Lat / Lon are in degrees
+    Depth in km
+    quantity_ID needs to match those in the litho1 model
+
+    Points that are not found are given the out-of-range value of -99999
+    &#34;&#34;&#34;
+
+    nlayers = len(l1_layer_decode)
+    shape = np.array(lon).shape
+
+    lon1   = np.array(lon).reshape(-1)
+    lat1   = np.array(lat).reshape(-1)
+    depth1 = np.array(depth).reshape(-1)
+    point_properties = np.empty_like(depth1)
+
+    layer_depths     = np.empty((nlayers, lat1.shape[0]))
+    layer_properties = np.ones((nlayers+1, lat1.shape[0])) * -99999.0  # if the point is not found it will end up in the overshoot !
+
+    # should assert here that the three arrays are equal size
+
+    for i in range(0, nlayers, 1 ):
+        layer_depths[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
+                                      _litho_data[i,l1_data_decode[&#34;DEPTH&#34;]], order=1)
+        layer_properties[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
+                                      _litho_data[i,l1_data_decode[quantity_ID]], order=1)
+
+
+    A = -layer_depths
+    B = -depth1 * 1000.0
+    C = divmod(np.searchsorted(A.ravel(), B), A.shape[1])[0] # YEP - this seems to be the best way !!
+
+    # point_properties = np.diag(layer_properties[C[:],:])
+
+    point_properties = np.empty_like(depth1)
+    for i,layer in enumerate(C):
+
+        point_properties[i] = layer_properties[layer,i]
+
+    return C, point_properties.reshape(shape)</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.property_on_depth_profile"><code class="name flex">
+<span>def <span class="ident">property_on_depth_profile</span></span>(<span>lat, lon, depths, quantity_ID='DENSITY')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Lat / Lon are in degrees
+Depth in km
+quantity_ID needs to match those in the litho1 model</p>
+<p>Points that are not found are given the out-of-range value of -99999</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def property_on_depth_profile(lat, lon, depths, quantity_ID=&#34;DENSITY&#34;):
+    &#34;&#34;&#34;
+    Lat / Lon are in degrees
+    Depth in km
+    quantity_ID needs to match those in the litho1 model
+
+    Points that are not found are given the out-of-range value of -99999
+
+    &#34;&#34;&#34;
+
+    lon1 = np.array((lon,))
+    lat1 = np.array((lat,))
+    depths1 = np.array(depths)
+
+    nlayers = len(l1_layer_decode)
+    point_properties = np.empty_like(depths)
+
+    layer_depths     = np.empty((nlayers))
+    layer_properties = np.ones((nlayers+1)) * -99999.0  # if the point is not found it will end up in the overshoot !
+
+    # should assert here that the three arrays are equal size
+
+    for i in range(0, nlayers, 1 ):
+        layer_depths[i], err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[i,l1_data_decode[&#34;DEPTH&#34;]], order=1)
+        layer_properties[i], err = _interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                      _litho_data[i,l1_data_decode[quantity_ID]], order=1)
+
+
+    A = -layer_depths
+    B = -depths1 * 1000.0
+    C = np.searchsorted(A, B)
+
+    point_properties = np.empty_like(depths)
+    for i,layer in enumerate(C):
+
+        point_properties[i] = layer_properties[layer]
+
+    return C, point_properties</code></pre>
+</details>
+</dd>
+<dt id="litho1pt0.write_processed_litho_data"><code class="name flex">
+<span>def <span class="ident">write_processed_litho_data</span></span>(<span>filename, litho_data, litho_points)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Ensures that the data is stored in a format which is valid for initialising the class</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_processed_litho_data(filename, litho_data, litho_points):
+    &#34;&#34;&#34;
+    Ensures that the data is stored in a format which is valid for initialising the class
+    &#34;&#34;&#34;
+
+    np.savez_compressed(filename, litho1_all_data=litho_data, litho1_mesh_coords=litho_points)
+
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="litho1pt0.documentation" href="documentation.html">litho1pt0.documentation</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="litho1pt0.crust_type_at" href="#litho1pt0.crust_type_at">crust_type_at</a></code></li>
+<li><code><a title="litho1pt0.layer_depth" href="#litho1pt0.layer_depth">layer_depth</a></code></li>
+<li><code><a title="litho1pt0.preprocess_raw_litho1_data" href="#litho1pt0.preprocess_raw_litho1_data">preprocess_raw_litho1_data</a></code></li>
+<li><code><a title="litho1pt0.process_raw_litho1_data" href="#litho1pt0.process_raw_litho1_data">process_raw_litho1_data</a></code></li>
+<li><code><a title="litho1pt0.property_at_lat_lon_depth_points" href="#litho1pt0.property_at_lat_lon_depth_points">property_at_lat_lon_depth_points</a></code></li>
+<li><code><a title="litho1pt0.property_on_depth_profile" href="#litho1pt0.property_on_depth_profile">property_on_depth_profile</a></code></li>
+<li><code><a title="litho1pt0.write_processed_litho_data" href="#litho1pt0.write_processed_litho_data">write_processed_litho_data</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.5</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
