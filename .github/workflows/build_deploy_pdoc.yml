@@ -1,10 +1,9 @@
-name: github pages
+name: Deploy docs to gh-pages
 
 on:
   push:
-    branches:
-      - dev # dev to get the action right, remove when 
-      - master  
+    branches: [dev, master]
+
 
 jobs:
   deploy:
