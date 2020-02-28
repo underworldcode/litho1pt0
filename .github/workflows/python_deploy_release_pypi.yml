@@ -3,13 +3,14 @@ name: Upload Python Package to PYPI
 on:
   release:
     types: [created]
-    type: [created]
+    type:  [created]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
@@ -27,7 +28,7 @@ jobs:
         pip install scipy
         pip install Cython
         pip install stripy
-        #
+        
     - name: Build and publish
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
