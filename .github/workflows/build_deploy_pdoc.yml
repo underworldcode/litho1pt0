@@ -35,6 +35,7 @@ jobs:
           mkdir -p docs
           pdoc --config latex_math=True --html -o docs --force litho1pt0 
 
+      # Note deploy key needs the ----BEGIN ... KEY---- lines too
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
