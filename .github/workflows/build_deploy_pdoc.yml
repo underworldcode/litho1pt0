@@ -32,7 +32,7 @@ jobs:
 
       - name: Install litho1pt0
         run: |
-          pip install .
+          pip install -e .
  
       - name: Build docs with pdoc
         run: | 
