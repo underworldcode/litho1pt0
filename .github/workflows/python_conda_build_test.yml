@@ -42,7 +42,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda install pip 
-          conda install -c conda-forge libgfortran=4.0.0 numpy scipy
+          conda install -c conda-forge fortran-compiler numpy scipy
           conda install pytest
           # This is not quite ready !
           # conda install -c underworldcode stripy

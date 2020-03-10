@@ -17,6 +17,8 @@ build:
 
 requirements:
   host:
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
     - numpy
     - pip
     - python
@@ -42,4 +44,4 @@ extra:
   recipe-maintainers:
     - lmoresi 
     - brmather 
-    
+

@@ -28,7 +28,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda update -n base -c defaults conda
-          conda install -c conda-forge fortran-compiler numpy scipy
+          conda install -c conda-forge compilers numpy scipy cython
           conda install pytest
           conda install -c underworldcode stripy
 
@@ -37,7 +37,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda update -n base -c defaults conda
-          conda install -c conda-forge gfortran_osx-64 libgfortran numpy scipy
+          conda install -c conda-forge compilers numpy scipy cython
           conda install pytest
           conda install -c underworldcode stripy
 
