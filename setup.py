@@ -13,6 +13,13 @@
 
 
 from setuptools import setup
+
+try: 
+    from distutils.command import bdist_conda
+except ImportError:
+    pass
+
+
 from os import path
 import io
 
