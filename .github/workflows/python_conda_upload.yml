@@ -27,7 +27,6 @@ jobs:
         run: conda info
 
       - name: Install dependencies on 'ubuntu-latest'       
-        if: matrix.os == 'ubuntu-latest' 
         shell: bash -l {0}
         run: |
           conda update -n base -c defaults conda
@@ -35,16 +34,8 @@ jobs:
           conda install pytest
           conda install -c underworldcode stripy
 
-      - name: Install dependencies on MacOS
-        if: matrix.os == 'macos-latest'
-        shell: bash -l {0}
-        run: |
-          conda update -n base -c defaults conda
-          conda install -c conda-forge compilers numpy scipy cython
-          conda install pytest
-          conda install -c underworldcode stripy
 
-     - name: Reinvent the wheel / upload (UBUNTU)
+      - name: Reinvent the wheel / upload (UBUNTU)
         if: matrix.os == 'ubuntu-latest' 
 
         env:
