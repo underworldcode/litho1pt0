@@ -26,7 +26,7 @@ jobs:
         shell: bash -l {0}
         run: conda info
 
-      - name: Install dependencies on 'ubuntu-latest'       
+      - name: Install dependencies 
         shell: bash -l {0}
         run: |
           conda update -n base -c defaults conda
@@ -34,6 +34,9 @@ jobs:
           conda install pytest
           conda install conda-build anaconda-client 
           conda install -c underworldcode stripy
+
+          conda config --add channels underworldcode
+
 
 
       - name: Reinvent the wheel / upload (UBUNTU)
