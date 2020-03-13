@@ -3,9 +3,7 @@ name: conda -c underworldcode
 on: 
   release:
     types: [created, edited]
-  push:
-    branches:
-      - dev
+
 
 jobs:
   catch_and_release: 
