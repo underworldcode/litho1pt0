@@ -33,7 +33,7 @@ if __name__ == "__main__":
           author_email      = "louis.moresi@unimelb.edu.au",
           url               = "https://github.com/underworldcode/litho1pt0",
           download_url      = "",
-          version           = "1.2.0",
+          version           = "1.5.0",
           description       = "Python interface to Litho 1.0 dataset - based on stripy",
           long_description  =long_description,
           long_description_content_type='text/markdown',
