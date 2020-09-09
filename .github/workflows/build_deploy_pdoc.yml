@@ -29,7 +29,11 @@ jobs:
           pip install Cython
           pip install stripy
           pip install pdoc3
-   
+
+      - name: Install litho1pt0
+        run: |
+          pip install -e .
+ 
       - name: Build docs with pdoc
         run: | 
           mkdir -p docs

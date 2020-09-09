@@ -13,6 +13,13 @@
 
 
 from setuptools import setup
+
+try: 
+    from distutils.command import bdist_conda
+except ImportError:
+    pass
+
+
 from os import path
 import io
 
@@ -26,13 +33,13 @@ if __name__ == "__main__":
           author_email      = "louis.moresi@unimelb.edu.au",
           url               = "https://github.com/underworldcode/litho1pt0",
           download_url      = "",
-          version           = "1.0.0",
+          version           = "1.5.0",
           description       = "Python interface to Litho 1.0 dataset - based on stripy",
           long_description  =long_description,
           long_description_content_type='text/markdown',
           packages          = ['litho1pt0'],
           package_dir       = {'litho1pt0': 'litho1pt0'},
-          package_data      = {'litho1pt0': ['data/*.npz', 'Notebooks/litho1pt0/*ipynb', 'Notebooks/litho1pt0/Data/*npz'] },
+          package_data      = {'litho1pt0': ['data/*.npz', 'Notebooks/litho1pt0/*ipynb', 'Notebooks/litho1pt0/data/*nc'] },
           include_package_data = True,
           install_requires=['stripy']
           )
