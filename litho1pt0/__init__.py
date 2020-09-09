@@ -153,7 +153,7 @@ _c1_region_decode["Y3"]= 35
 _l1_data = np.load(L1pt0_FILE)
 _litho_data = _l1_data["litho1_all_data"]
 _mesh_coords = _l1_data["litho1_mesh_coords"]
-_interpolator = stripy.sTriangulation(np.radians(_mesh_coords.T[2]), np.radians(_mesh_coords.T[0]))
+_interpolator = stripy.sTriangulation(np.radians(_mesh_coords.T[2]), np.radians(_mesh_coords.T[0]), permute=True)
 
 _c1_data = np.load(C1pt0_FILE)
 _c1_crust_type_lat_lon = _c1_data['latlonDescriptor']
@@ -166,7 +166,7 @@ def layer_depth( lat, lon, layerID="LID-BOTTOM"):
 
     ## Must wrap longitude from 0 to 360 ...
 
-    lon1 = np.array(lon)%360.0
+    lon1 = np.array(lon%360.0)
     lat1 = np.array(lat)
 
     # ## Must wrap longitude from -180 to 180 ...
@@ -198,12 +198,6 @@ def crust_type_at(lat=None, lon=None):
 
     # t = _c1_crust_type_lat_lon[i,j]
     # des = litho.c1_region_descriptor[t]
-
-    return t
-
-
-
-
 
     return t
 
