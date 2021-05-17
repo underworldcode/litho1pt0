@@ -178,7 +178,16 @@ def layer_depth( lat, lon, layerID="LID-BOTTOM"):
 
     return data
 
-
+def layer_property( lat, lon, layerID="LID-BOTTOM",quantity_ID="DENSITY"):
+    """Returns layer property at lat / lon (degrees)
+    where lat/lon may be arrays (of equal size).
+    """
+    lon1 = np.array(lon%360.0)
+    lat1 = np.array(lat)
+    data, err = litho._interpolator.interpolate( np.radians(lon1), np.radians(lat1),
+                                 _litho_data[litho.l1_layer_decode[layerID], l1_data_decode[quantity_ID]], order=1 )
+    return data
+    
 def crust_type_at(lat=None, lon=None):
     """
     lat, lon (degrees)
