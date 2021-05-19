@@ -211,11 +211,12 @@ def crust_type_at(lat=None, lon=None):
     return t
 
 
-def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID="DENSITY"):
+def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID="DENSITY",interface_type="TOP"):
     """
     Lat / Lon are in degrees
     Depth in km
     quantity_ID needs to match those in the litho1 model
+    interface_type is "TOP" or "BOTTOM" to define the property at the interface 
 
     Points that are not found are given the out-of-range value of -99999
     """
@@ -227,11 +228,11 @@ def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID="DENSITY"):
     lat1   = np.array(lat).reshape(-1)
     depth1 = np.array(depth).reshape(-1)
     point_properties = np.empty_like(depth1)
+    nlocations = lat1.shape[0]
 
-    layer_depths     = np.empty((nlayers, lat1.shape[0]))
-    layer_properties = np.ones((nlayers+1, lat1.shape[0])) * -99999.0  # if the point is not found it will end up in the overshoot !
-
-    # should assert here that the three arrays are equal size
+    layer_depths     = np.empty((nlayers, nlocations))
+    layer_properties = np.ones((nlayers+1, nlocations)) * -99999.0  # if the point is not found it will end up in the overshoot !
+    #should assert here that the three arrays are equal size
 
     for i in range(0, nlayers, 1 ):
         layer_depths[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
@@ -239,19 +240,32 @@ def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID="DENSITY"):
         layer_properties[i], err = _interpolator.interpolate( lon1 * np.pi / 180.0, lat1 * np.pi / 180.0,
                                       _litho_data[i,l1_data_decode[quantity_ID]], order=1)
 
-
     A = -layer_depths
     B = -depth1 * 1000.0
-    C = divmod(np.searchsorted(A.ravel(), B), A.shape[1])[0] # YEP - this seems to be the best way !!
-
-    # point_properties = np.diag(layer_properties[C[:],:])
+    th_depth = 100 # [m]
 
     point_properties = np.empty_like(depth1)
-    for i,layer in enumerate(C):
-
-        point_properties[i] = layer_properties[layer,i]
-
-    return C, point_properties.reshape(shape)
+    C = np.empty_like(depth1)
+    for i in range(0,nlocations):
+        idxs = np.where(np.abs(A[:,i]-B[i])<th_depth)[0]
+        nidxs = len(idxs)    
+        if nidxs==0:
+            idx = np.searchsorted(A[:,i], B[i]) 
+        elif nidxs ==1: 
+            idx = nidxs 
+        elif nidxs ==2:
+            if  interface_type == "TOP":
+                idx = idxs[0]
+            elif interface_type == "BOTTOM":
+                idx = idxs[1] 
+        elif nidxs >2:
+            if  interface_type == "TOP":
+                idx = idxs[0] 
+            elif interface_type == "BOTTOM":
+                idx = idxs[-1]
+        point_properties[i] = layer_properties[idx,i]   
+        C[i] = idx
+    return C.reshape(shape), point_properties.reshape(shape)
 
 def property_on_depth_profile(lat, lon, depths, quantity_ID="DENSITY"):
     """
