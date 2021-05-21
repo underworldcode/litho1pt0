@@ -244,28 +244,32 @@ def property_at_lat_lon_depth_points(lat, lon, depth, quantity_ID="DENSITY",inte
     B = -depth1 * 1000.0
     th_depth = 100 # [m]
 
-    point_properties = np.empty_like(depth1)
-    C = np.empty_like(depth1)
-    for i in range(0,nlocations):
-        idxs = np.where(np.abs(A[:,i]-B[i])<th_depth)[0]
-        nidxs = len(idxs)    
-        if nidxs==0:
-            idx = np.searchsorted(A[:,i], B[i]) 
-        elif nidxs ==1: 
-            idx = nidxs 
-        elif nidxs ==2:
-            if  interface_type == "TOP":
-                idx = idxs[0]
-            elif interface_type == "BOTTOM":
-                idx = idxs[1] 
-        elif nidxs >2:
-            if  interface_type == "TOP":
-                idx = idxs[0] 
-            elif interface_type == "BOTTOM":
-                idx = idxs[-1]
-        point_properties[i] = layer_properties[idx,i]   
-        C[i] = idx
-    return C.reshape(shape), point_properties.reshape(shape)
+    dAB  = np.abs(A-B)
+    idx  = np.argmin(dAB,axis=0)
+    dAB_M = np.where(np.abs(A-B)<th_depth,0,1)
+    ndAB = np.sum(dAB_M==0,axis=0) 
+    idx2 = idx.copy()
+
+    # condition: 0 element of A[:,i] that equal B[i] 
+    c0 = np.where(ndAB==0)[0] 
+    a_c0 = A[idx[c0],c0]
+    b_c0 = B[c0]
+    idx2[c0]=idx[c0]+(-1)**((a_c0>b_c0)+0)
+    idx2[idx2==-1]=0 # beyond the depthest
+    
+    # condition: 1 element of A[:,i] that equal B[i],idx2 is same as idx
+
+    # condition: > 1 elements of A[:,i] that equal B[i] 
+    c2 = np.where(ndAB>1)[0] 
+    dAB_M_c2 = dAB_M[:,c2]
+    if interface_type == "BOTTOM":
+        idx2[c2]= nlayers-1-np.argmin(dAB_M_c2[::-1,:], axis=0)
+    # elseif  interface_type == "TOP":,idx2 is same as idx
+    
+    idx3 = np.arange(0,nlocations)
+    point_properties = layer_properties[idx2,idx3]   
+    
+    return idx2.reshape(shape), point_properties.reshape(shape)
 
 def property_on_depth_profile(lat, lon, depths, quantity_ID="DENSITY"):
     """
