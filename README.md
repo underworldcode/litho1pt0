@@ -47,5 +47,10 @@ The dependencies will be automatically installed by `pip`, except for `gfortran`
 (or any Fortran compiler). It must be installed in your system before installing
 `stripy` with `pip`.
 
+### Documentation
+
+Automatically populated to [underworldcode.github.io/litho1pt0](https://underworldcode.github.io/litho1pt0)
+
+
 
 
